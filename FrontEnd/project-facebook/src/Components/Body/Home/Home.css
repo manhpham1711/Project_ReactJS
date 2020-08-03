@@ -1,0 +1,62 @@
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .Status {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  
+  .ListUser {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .body {
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  @media (min-width: 576px) {
+    .body {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .body {
+      max-width: 600px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .body {
+      max-width: 700px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .body {
+      max-width: 900px;
+    }
+  }

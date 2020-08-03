@@ -1,0 +1,124 @@
+.Header{
+    display: inline-flex;
+    width: 100%;
+    height: 80px;
+    box-shadow: 1px 1px 1px 1px rgba(82, 67, 47, 0.178);
+}
+
+.col-sm-6, .col-sm-4, .col-sm-5, .col-sm-2{
+    position: relative; 
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.Header .col-sm-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+
+.Header .col-sm-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.Header .col-sm-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.Header .col-sm-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+}
+
+.col-sm-5 .logo img {
+    width: auto;
+    height: 80px;
+}
+
+.col-sm-2 .Messenger img {
+    margin-top: 2px;
+    width: auto;
+    height: 75px;
+}
+
+.col-sm-5 input{
+    margin-top: 5%;
+}
+
+/* input .search */
+
+input {
+    outline: none;
+}
+input[type = search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none; 
+}
+
+
+input[type=search] {
+    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: solid 1px #ccc;
+    padding: 9px 10px 9px 32px;
+    width: 55px;
+    
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+input[type=search]:focus {
+    width: 130px;
+    background-color: #fff;
+    border-color: #66CC75;
+    
+    -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+    color: #999;
+}
+input::-webkit-input-placeholder {
+    color: #999;
+}
+.search input[type=search] {
+    width: 20px;
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+}
+.search input[type=search]:hover {
+    background-color: #fff;
+}
+.search input[type=search]:focus {
+    width: 90%;
+    padding-left: 32px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+}
+.search input:-moz-placeholder {
+    color: transparent;
+}
+.search input::-webkit-input-placeholder {
+    color: transparent;
+}

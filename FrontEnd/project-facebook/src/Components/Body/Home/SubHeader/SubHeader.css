@@ -1,0 +1,25 @@
+.subHeader{
+    margin-left: 5%;
+}
+
+.subHeader img{
+    border-radius: 50%; 
+    border: 2px solid #2bf335; 
+    padding: 3px; 
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+}
+
+.subHeader textarea{
+    width: 60%;
+    height: 35px;
+    margin: 0 auto;
+    border:solid 3px #ccc;
+    border-radius: 10px;
+    text-align: left;
+}
+.functionPost{
+    display: inline-flex;
+    margin-left: 10%;
+}
