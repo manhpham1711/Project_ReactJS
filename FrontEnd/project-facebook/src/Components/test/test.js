@@ -1,55 +1,72 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 
+import data from '../Body/data';
+
 class Test extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: []
-    }
-    this.getData();
-    this.logout = this.logout.bind(this);
+
+
+  constructor(props) {
+    super(props);
+    console.log('loaded');
+    console.log(data)
+    // console.log( JSON.stringify(this.state.data));
+    // console.log(this.state.data);
+    // this.getData();
+    this.shows = this.shows.bind(this);
   }
 
-  getData() {
-    fetch("http://127.0.0.1:8000/api/user/detail",
-      {
-        method: "post",
-        headers: {
-          "Authorization": localStorage.getItem("User_id")
-        },
-        body: null
-      })
-      .then(response => {
-        return response.json()
-          .then((data) => {
-            console.log(data);
-            this.updateUI(data);
-          });
-      });
-  }
+  // getData() {
+  //   fetch("http://127.0.0.1:8000/api/user/detail",
+  //     {
+  //       method: "post",
+  //       headers: {
+  //         "Authorization": localStorage.getItem("User_id")
+  //       },
+  //       body: null
+  //     })
+  //     .then(response => {
+  //       return response.json()
+  //         .then((data) => {
+  //           console.log(data);
+  //           this.updateUI(data);
+  //         });
+  //     });
+  // }
 
-  updateUI(data) {
-    this.setState({
-      user: data
-    });
-  }
+  // updateUI(data) {
+  //   this.setState({
+  //     user: data
+  //   });
+  // }
 
-  logout() {
-    localStorage.removeItem("User_id");
-    this.props.history.push('/');
-  }
+  // logout() {
+  //   localStorage.removeItem("User_id");
+  //   this.props.history.push('/');
+  // }
 
+  shows() {
+    // const { data } = this.state;
+    // console.log("day la data" + JSON.stringify(data));
+
+    return this.state.data.map((item, index) =>
+      <div key={index}>
+        <h3>{item.id}</h3>
+        <h4>{item.name}</h4>
+      </div>
+    )
+    // return list;
+
+  }
 
   render() {
-    console.log(this.state.user);
     return (
       <div>
-        <h1>name {this.state.user.name}</h1>
+        <p>hwllloooo</p>
 
-        <button onClick={this.logout}>logout</button>
       </div>
     )
   }
+
 }
 export default withRouter(Test);

@@ -22,8 +22,6 @@ class App extends Component {
     if (!id) {
       alert("Vui Long SinUp or SinIn de su dung");
       this.props.history.push('/');
-    } else {
-      this.props.history.push('/home');
     }
   }
 

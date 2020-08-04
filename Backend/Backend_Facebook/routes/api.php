@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/user/login','LoginController@login');
 
 Route::post('/user/detail','LoginController@detail');
+
+Route::get('/index','FacebookController@index');

@@ -8,6 +8,17 @@ class Login extends Component {
     this.signUp = this.signUp.bind(this);
     this.signIn = this.signIn.bind(this);
     this.onLoginSubmit = this.onLoginSubmit.bind(this);
+    this.checkUser = this.checkUser.bind(this);
+  }
+
+  checkUser() {
+    var id = localStorage.getItem("User_id");
+    //alert(id);
+    if (id !== null) {
+      this.props.history.push('/home');
+    } else {
+      this.props.history.push('/');
+    }
   }
 
   onLoginSubmit(event) {
@@ -31,15 +42,25 @@ class Login extends Component {
       body: userInJson
     })
       .then((response) => {
-        return response.json();
-
-      })
-
-      .then((response) => {
-        console.log(response);
-        localStorage.removeItem("User_id");
-        localStorage.setItem("User_id", response);
-        this.props.history.push('/home');
+        console.log('datraaaaaaa');
+        console.log(response.status);
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          response = null;
+          return response;
+        }
+      }).then((response) => {
+        if (response !== null) {
+          console.log(response);
+          localStorage.removeItem("User_id");
+          localStorage.setItem("User_id", response);
+          this.props.history.push('/home');
+        } else {
+          localStorage.removeItem("User_id");
+          alert('username or paseword incorect');
+          this.props.history.push('/');
+        }
       });
   }
   signUp() {
@@ -52,7 +73,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="login">
+      <div className="login" onLoad={this.checkUser} >
         <div className="logoFacebook">
           <img src="Logo/logo.png" alt="logo" />
           <h1>Welcome</h1>

@@ -16,7 +16,6 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path='/'> <Login /> </Route>
-
         <Route exact path='/home'> <App /> </Route>
         <Route exact path='/test'> <Test /> </Route>
       </Switch>

@@ -9,7 +9,8 @@ class FacebookController extends Controller
 {
     function index(){
         $user = User::all();
-
-        echo json_encode($user);
+        // var_dump(response()->json($user, 200));
+        return response()->json($user, 200);
+        // return $user;
     }
 }
