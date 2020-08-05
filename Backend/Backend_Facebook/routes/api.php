@@ -23,3 +23,5 @@ Route::post('/user/login','LoginController@login');
 Route::post('/user/detail','LoginController@detail');
 
 Route::get('/index','FacebookController@index');
+
+Route::post('/user/create','LoginController@createUser');

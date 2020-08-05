@@ -7,13 +7,13 @@ class Login extends Component {
     super(props);
     this.signUp = this.signUp.bind(this);
     this.signIn = this.signIn.bind(this);
-    this.onLoginSubmit = this.onLoginSubmit.bind(this);
+    this.onSignInSubmit = this.onSignInSubmit.bind(this);
+    this.onSignUpSubmit = this.onSignUpSubmit.bind(this);
     this.checkUser = this.checkUser.bind(this);
   }
 
   checkUser() {
     var id = localStorage.getItem("User_id");
-    //alert(id);
     if (id !== null) {
       this.props.history.push('/home');
     } else {
@@ -21,28 +21,28 @@ class Login extends Component {
     }
   }
 
-  onLoginSubmit(event) {
+  onSignInSubmit(event) {
     event.preventDefault();
 
     let username = event.target['username'].value;
     let password = event.target['password'].value;
 
-    let user = {
+    let Account = {
       username: username,
       password: password
     }
-    let userInJson = JSON.stringify(user);
-    console.log(userInJson);
+    let AccountInJson = JSON.stringify(Account);
+    console.log(AccountInJson);
 
     fetch("http://127.0.0.1:8000/api/user/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json"
       },
-      body: userInJson
+      body: AccountInJson
     })
       .then((response) => {
-        console.log('datraaaaaaa');
+        console.log('dataaaaaaa');
         console.log(response.status);
         if (response.status === 200) {
           return response.json();
@@ -63,6 +63,53 @@ class Login extends Component {
         }
       });
   }
+  onSignUpSubmit(event) {
+    event.preventDefault();
+
+    let name = event.target['name'].value;
+    let gender = event.target['gender'].value;
+    let birthday = event.target['birthday'].value;
+    // let img = event.target['birthday'].value;
+    let username = event.target['username'].value;
+    let password = event.target['password'].value;
+
+    let user = {
+      name: name,
+      gender: gender,
+      birthday: birthday,
+      username: username,
+      password: password
+    }
+    let userInJson = JSON.stringify(user);
+    console.log(userInJson);
+    fetch("http://127.0.0.1:8000/api/user/create", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: userInJson
+    }).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      } else {
+        response = null;
+        return response;
+      }
+    }).then((response) => {
+      if (response !== null) {
+        console.log(response);
+        alert("Đăng ký thành công => Cùng nhau trãi nghiệm những tính năng vượt trội của facebook nào :)");
+        localStorage.removeItem("User_id");
+        localStorage.setItem("User_id", response);
+        this.props.history.push('/home');
+      } else {
+        localStorage.removeItem("User_id");
+        alert('Đăng ký không thành công vui lòng kiểm tra lại thông tin của bạn');
+      }
+    });
+  }
+
+
   signUp() {
     const container = document.getElementById('container');
     container.classList.add("right-panel-active");
@@ -84,19 +131,29 @@ class Login extends Component {
           {/* ********************************************Fornend Sign Up **************************/}
 
           <div className="form-container sign-up-container">
-            <form action="#">
+            <form onSubmit={this.onSignUpSubmit}>
               <h1>Create Account</h1>
-              <div className="social-container">
-                <a href="#" className="social"><img src="Logo/google.png" alt="logo" /></a>
-                <a href="#" className="social"><img src="Logo/linkedin.png" alt="logo" /></a>
-                <a href="#" className="social"><img src="Logo/zalo.png" alt="logo" /></a>
+              <div className="avataImg">
+                <input type="file" /><br />
+                <img id="myimage" src="" />
               </div>
-              <span>or use your email for registration</span>
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input type="text" name="name" placeholder="Name" />
+              <div className="gender">
+                <div className="formgender">
+                  <h3>Gender: </h3>
+                </div>
+                <div className="formgender">
+                  <input type="radio" name="gender" value="Nam" />
+                  <label for="male">Male</label>
+                </div>
+                <div className="formgender">
+                  <input type="radio" name="gender" value="Nu" />
+                  <label for="female">Female</label>
+                </div>
+              </div>
+              <input type="date" name="birthday" />
+              <input type="text" name="username" placeholder="Username" />
+              <input type="text" name="password" placeholder="Password" />
               <button type="submit">Sign Up</button>
             </form>
           </div>
@@ -104,7 +161,7 @@ class Login extends Component {
           {/* ********************************************Fornend Sign In **************************/}
 
           <div className="form-container sign-in-container">
-            <form onSubmit={this.onLoginSubmit}>
+            <form onSubmit={this.onSignInSubmit}>
               <h1>Sign in</h1>
               <div className="social-container">
                 <a href="#" className="social"><img src="Logo/google.png" alt="logo" /></a>

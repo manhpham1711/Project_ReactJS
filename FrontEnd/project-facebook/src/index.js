@@ -10,6 +10,7 @@ import {
   Route
 } from "react-router-dom";
 import Test from './Components/test/test';
+import Img from './Components/test/testimg';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path='/'> <Login /> </Route>
         <Route exact path='/home'> <App /> </Route>
         <Route exact path='/test'> <Test /> </Route>
+        <Route exact path='/tests'><Img /> </Route>
       </Switch>
     </Router>
   </React.StrictMode>,
