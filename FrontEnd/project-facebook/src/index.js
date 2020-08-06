@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Test from './Components/test/test';
 import Img from './Components/test/testimg';
+import TestUpoadFile from './Components/test/TestUpoadFile';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route exact path='/home'> <App /> </Route>
         <Route exact path='/test'> <Test /> </Route>
         <Route exact path='/tests'><Img /> </Route>
+        <Route exact path='/test/uploadImg'><TestUpoadFile /></Route>
       </Switch>
     </Router>
   </React.StrictMode>,

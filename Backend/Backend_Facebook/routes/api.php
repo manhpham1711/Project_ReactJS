@@ -25,3 +25,5 @@ Route::post('/user/detail','LoginController@detail');
 Route::get('/index','FacebookController@index');
 
 Route::post('/user/create','LoginController@createUser');
+
+Route::post('/user/uploadFile','UpLoadImageController@uploadFile');

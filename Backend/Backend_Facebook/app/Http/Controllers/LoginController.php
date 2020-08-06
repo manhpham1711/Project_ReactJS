@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use \Firebase\JWT\JWT;
 use App\User;
+use App\Http\Controllers\UpLoadImageController;
 
 class LoginController extends Controller
 {
@@ -30,6 +31,13 @@ class LoginController extends Controller
         $name = $request->input('name');
         $gender = $request->input('gender');
         $birthday = $request->input('birthday');
+
+        $image = $request->input('image');
+        if(is_null($image)){
+            $image = "storage/public/53-10-20-6-8-2020.png";
+        }else{
+            $image = UpLoadImageController::uploadFile($image);
+        }
         $username = $request->input('username');
         $password = $request->input('password');
 
@@ -39,7 +47,7 @@ class LoginController extends Controller
             $userNew->name = $name;
             $userNew->gender = $gender;
             $userNew->birthday = $birthday;
-            $userNew->image = "https://gamek.mediacdn.vn/133514250583805952/2020/1/16/1-15791579653801179133828.png";
+            $userNew->image = $image;
             $userNew->username = $username;
             $userNew->password = Hash::make($password);
             $userNew->route = "User";
@@ -59,11 +67,8 @@ class LoginController extends Controller
         $token = request()->header("Authorization");
 		$key = "21A hocsinhngoannhatnha j@1711";
 		$data = JWT::decode($token, $key, array('HS256'));
-
 		$users = User::all();
 		$user = $users->find($data);
 		return response()->json($user, 200);
     }
-
-
 }
