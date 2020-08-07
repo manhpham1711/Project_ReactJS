@@ -47,7 +47,7 @@ class LoginController extends Controller
             $userNew->name = $name;
             $userNew->gender = $gender;
             $userNew->birthday = $birthday;
-            $userNew->image = $image;
+            $userNew->avatar = $image;
             $userNew->username = $username;
             $userNew->password = Hash::make($password);
             $userNew->route = "User";

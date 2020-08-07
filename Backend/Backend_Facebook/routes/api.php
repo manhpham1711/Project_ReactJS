@@ -22,8 +22,15 @@ Route::post('/user/login','LoginController@login');
 
 Route::post('/user/detail','LoginController@detail');
 
-Route::get('/index','FacebookController@index');
-
 Route::post('/user/create','LoginController@createUser');
 
 Route::post('/user/uploadFile','UpLoadImageController@uploadFile');
+
+Route::get('/listStatus','User\StatusController@index');
+
+Route::post('/status/add','User\StatusController@createStatus');
+
+Route::post('/like','User\StatusController@createStatus'); 
+
+
+//Route::get('/index','FacebookController@index');

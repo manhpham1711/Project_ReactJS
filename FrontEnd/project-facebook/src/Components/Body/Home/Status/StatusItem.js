@@ -6,24 +6,23 @@ class StatusItem extends Component {
         return (
             <div className="status">
                 <div id="user">
-                    <img className="img" src="https://mtrend.vn/wp-content/uploads/2015/11/hinh-nen-tinh-yeu-dep-nhat-1.jpg" alt="" />
+                    <img className="img" src={"http://127.0.0.1:8000/" + this.props.item.avatar} alt="" />
                     <div id="information">
-                        <p> <b>Manh Pham </b></p>
-                        <p> 10 phut</p>
+                        <p> <b>{this.props.item.name} </b></p>
+                        <p> 10 phút</p>
                     </div>
                     <div className="menu">
                         <img src="Logo/3cham.png" />
                     </div>
                 </div>
-
                 <div id="posts">
                     <div className="content">
                         <p>
-                            Hoa cà màu tím Hoa tuy lip màu xanh Lẽ nào anh không biết Có người thầm iu anh.
+                            {this.props.item.content}
                         </p>
                     </div>
                     <div className="photo">
-                        <img src="https://mtrend.vn/wp-content/uploads/2015/11/hinh-nen-tinh-yeu-dep-nhat-1.jpg" alt="" />
+                        <img src={"http://127.0.0.1:8000/" + this.props.item.image} alt="" />
                     </div>
                     <div className="function">
                         <button><img src="Logo/Like.png" /></button>

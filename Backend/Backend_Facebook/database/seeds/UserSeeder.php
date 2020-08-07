@@ -9,7 +9,7 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * 
      * @return void
      */
     public function run()
@@ -18,8 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Mạnh Phạm',
             'gender' => 'Nam',
             'birthday' => '22/12/2000',
-            'image' => 'https://gamek.mediacdn.vn/133514250583805952/2020/1/16/1-15791579653801179133828.png',
-
+            'image' => 'storage/public/53-10-20-6-8-2020.png',
             'username' => 'Admin',
             'password' => Hash::make('123'),
             'route' => 'Admin',
@@ -30,14 +29,14 @@ class UserSeeder extends Seeder
             if($i % 2 == 0){
                 $gender = "Nu";
             }
+
             DB::table('users')->insert([
                 'name' => Str::random(6),
                 'gender' => $gender,
                 'birthday' => '11/11/2011',
-                'image' => 'https://gamek.mediacdn.vn/133514250583805952/2020/1/16/1-15791579653801179133828.png',
-
+                'image' => 'storage/public/53-10-20-6-8-2020.png',
                 'username' => Str::random(5),
-                'password' => Hash::make('password'),
+                'password' => Hash::make('1'),
                 'route' => 'User',
             ]);
         }

@@ -13,7 +13,7 @@ class CreateStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('status', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('image',1000);
@@ -29,6 +29,6 @@ class CreateStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('statuses');
     }
 }

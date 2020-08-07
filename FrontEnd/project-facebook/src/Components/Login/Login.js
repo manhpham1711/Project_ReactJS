@@ -6,7 +6,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: null
+      image: []
     };
 
     this.signUp = this.signUp.bind(this);
@@ -15,7 +15,6 @@ class Login extends Component {
     this.onSignUpSubmit = this.onSignUpSubmit.bind(this);
     this.checkUser = this.checkUser.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
-    this.updateImg = this.updateImg.bind(this);
   }
 
   checkUser() {
@@ -48,7 +47,6 @@ class Login extends Component {
       body: AccountInJson
     })
       .then((response) => {
-        console.log('dataaaaaaa');
         console.log(response.status);
         if (response.status === 200) {
           return response.json();
@@ -61,6 +59,7 @@ class Login extends Component {
           console.log(response);
           localStorage.removeItem("User_id");
           localStorage.setItem("User_id", response);
+          alert("welcome back to Facebook (*:*) ");
           this.props.history.push('/home');
         } else {
           localStorage.removeItem("User_id");
@@ -73,87 +72,78 @@ class Login extends Component {
   changeHandler(event) {
     event.stopPropagation();
     event.preventDefault();
+    var { image } = this.state;
     var files = event.target.files;
     var file = files[0];
     var fileReader = new FileReader();
+
     fileReader.onload = function (progressEvent) {
       var url = fileReader.result;
+      image.push(url);
       var myImg = document.getElementById("avata");
       myImg.src = url;
     }
-    fileReader.readAsDataURL(file); // fileReader.result -> URL.
-  }
-
-  updateImg(data) {
-    this.setState({
-      image: data
-    });
-    console.log(this.state.image);
+    fileReader.readAsDataURL(file);
+    this.setState({ image });
   }
 
   onSignUpSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
+    let name = event.target['name'].value;
+    let gender = event.target['gender'].value;
+    let birthday = event.target['birthday'].value;
+    let username = event.target['username'].value;
+    let password = event.target['password'].value;
 
-    var files = event.target.files;
-    var fileReader = new FileReader();
-    fileReader.onload = function (progressEvent) {
-      var url = fileReader.result;
-      let name = event.target['name'].value;
-      let gender = event.target['gender'].value;
-      let birthday = event.target['birthday'].value;
-      let username = event.target['username'].value;
-      let password = event.target['password'].value;
-
-      let user = {
-        name: name,
-        gender: gender,
-        birthday: birthday,
-        image: url,
-        username: username,
-        password: password
-      }
-      let userInJson = JSON.stringify(user);
-      console.log(userInJson);
-      fetch("http://127.0.0.1:8000/api/user/create", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: userInJson
-      }).then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        } else {
-          response = null;
-          return response;
-        }
-      }).then((response) => {
-        if (response !== null) {
-          console.log(response);
-          alert("Đăng ký thành công => Cùng nhau trãi nghiệm những tính năng vượt trội của facebook nào :)");
-          localStorage.removeItem("User_id");
-          localStorage.setItem("User_id", response);
-          this.props.history.push('/home');
-        } else {
-          localStorage.removeItem("User_id");
-          alert('Đăng ký không thành công vui lòng kiểm tra lại thông tin của bạn');
-        }
-      });
+    let user = {
+      name: name,
+      gender: gender,
+      birthday: birthday,
+      image: this.state.image[0],
+      username: username,
+      password: password
     }
-    fileReader.readAsDataURL(files); // fileReader.result -> URL.
+    let userInJson = JSON.stringify(user);
+    console.log(userInJson);
+    fetch("http://127.0.0.1:8000/api/user/create", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: userInJson
+    }).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      } else {
+        response = null;
+        return response;
+      }
+    }).then((response) => {
+      if (response !== null) {
+        console.log(response);
+        alert("Đăng ký thành công => Cùng nhau trãi nghiệm những tính năng vượt trội của facebook nào :)");
+        localStorage.removeItem("User_id");
+        localStorage.setItem("User_id", response);
+        this.props.history.push('/home');
+      } else {
+        localStorage.removeItem("User_id");
+        alert('Đăng ký không thành công vui lòng kiểm tra lại thông tin của bạn');
+      }
+    });
 
   }
-
 
   signUp() {
     const container = document.getElementById('container');
     container.classList.add("right-panel-active");
   }
+
   signIn() {
     const container = document.getElementById('container');
     container.classList.remove("right-panel-active");
   }
+
   render() {
     return (
       <div className="login" onLoad={this.checkUser} >
@@ -171,7 +161,7 @@ class Login extends Component {
               <h1>Create Account</h1>
               <div className="avataImg">
                 <form nctype="multipart/form-data">
-                  <input type="file" multiple onChange={this.changeHandler} />
+                  <input type="file" name="image" multiple onChange={this.changeHandler} />
                   <img id="avata" src="" />
                 </form>
               </div>
@@ -245,6 +235,10 @@ class Login extends Component {
       </div>
     )
   }
+  // componentDidUpdate() {
+  //   console.log('update');
+  //   console.log(this.state.image[0]);
+  // }
 }
 
 export default withRouter(Login);

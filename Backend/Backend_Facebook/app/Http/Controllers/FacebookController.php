@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class FacebookController extends Controller
 {
     function index(){
-        $user = User::all();
-        // var_dump(response()->json($user, 200));
-        return response()->json($user, 200);
-        // return $user;
+        DB::table('users')->truncate();
+        echo "dfdklfuhjidfy";
     }
 }
