@@ -12,6 +12,7 @@ import {
 import Test from './Components/test/test';
 import Img from './Components/test/testimg';
 import TestUpoadFile from './Components/test/TestUpoadFile';
+import TestLike from './Components/test/testLike';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +20,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path='/'> <Login /> </Route>
         <Route exact path='/home'> <App /> </Route>
-        <Route exact path='/test'> <Test /> </Route>
+        <Route exact path='/test'> <TestLike /> </Route>
         <Route exact path='/tests'><Img /> </Route>
         <Route exact path='/test/uploadImg'><TestUpoadFile /></Route>
       </Switch>

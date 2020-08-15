@@ -25,7 +25,7 @@ class StatusItem extends Component {
                         <img src={"http://127.0.0.1:8000/" + this.props.item.image} alt="" />
                     </div>
                     <div className="function">
-                        <button><img src="Logo/Like.png" /></button>
+                        <button onClick={this.props.onClickLike} onMouseEnter={this.props.onMouseEnterLike} onMouseLeave={this.props.onMouseLeaveLike}><img src="Logo/Like.png" /> {this.props.numberLike} </button>
                         <button><img src="Logo/Comment.png" /></button>
                         <button><img src="Logo/share.png" /></button>
                     </div>

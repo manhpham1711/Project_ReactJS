@@ -30,7 +30,13 @@ Route::get('/listStatus','User\StatusController@index');
 
 Route::post('/status/add','User\StatusController@createStatus');
 
-Route::post('/like','User\StatusController@createStatus'); 
+Route::post('/like','likeController@likeStatus');
+
+Route::get('/listLike','likeController@index');
+
+Route::post('/status/listPeopleLike','LikeController@listPeopleLike');
+
+
 
 
 //Route::get('/index','FacebookController@index');
