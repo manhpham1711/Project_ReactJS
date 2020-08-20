@@ -6,6 +6,10 @@ import {
 } from "react-router-dom";
 
 class Menu extends Component {
+    constructor(props){
+        super(props);
+        this.state = localStorage.getItem('User_id');
+    }
     render() {
         return (
             <div className="Menu">
@@ -25,7 +29,7 @@ class Menu extends Component {
                     <Link to="/notification"><img src="Logo/thongbao.png" alt="logo" /></Link>
                 </div>
                 <div className="col-sm-2">
-                    <Link to="/personal"><img src="Logo/menu.jpg" alt="logo" /></Link>
+                    <Link to='/personal'><img src="Logo/menu.jpg" alt="logo" /></Link>
                 </div>
             </div>
         )

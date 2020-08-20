@@ -1,5 +1,9 @@
 .subHeader{
-    margin-left: 5%;
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    border: solid 1px #000;
+    border-radius: 10px;
 }
 
 .subHeader img{
@@ -12,8 +16,8 @@
 }
 
 .subHeader textarea{
-    width: 60%;
-    height: 35px;
+    width: 83%;
+    height: 50px;
     margin: 0 auto;
     border:solid 3px #ccc;
     border-radius: 10px;
@@ -21,5 +25,17 @@
 }
 .functionPost{
     display: inline-flex;
-    margin-left: 10%;
+    margin: 2% 6%;
+}
+
+.functionPost input{
+    margin: 1% 9%;
+}
+
+.subHeader button{
+    width: 80%;
+    height: 29px;
+    margin: 8px 10%;
+    background-color: #2175ad;
+    color: #fff;
 }

@@ -3,6 +3,7 @@
     display: inline-flex;
     width: 100%;
     height: 60px;
+    position: absolute;
 }
 
 .col-sm-2{

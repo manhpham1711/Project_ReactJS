@@ -1,6 +1,7 @@
 .Footer{
     display: inline-flex;
     width: 100%;
+    margin-top: 400px;
     box-shadow: 1px 1px 1px 1px rgba(82, 67, 47, 0.178);
 }
 

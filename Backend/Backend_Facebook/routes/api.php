@@ -22,19 +22,29 @@ Route::post('/user/login','LoginController@login');
 
 Route::post('/user/detail','LoginController@detail');
 
+Route::post('/user/update','LoginController@updateInfomation');
+
 Route::post('/user/create','LoginController@createUser');
 
 Route::post('/user/uploadFile','UpLoadImageController@uploadFile');
 
 Route::get('/listStatus','User\StatusController@index');
 
+Route::post('/listStatus/user','User\StatusController@statusPerson');
+
 Route::post('/status/add','User\StatusController@createStatus');
 
 Route::post('/like','likeController@likeStatus');
 
-Route::get('/listLike','likeController@index');
+Route::get('/listLike/{id}','likeController@index');
 
-Route::post('/status/listPeopleLike','LikeController@listPeopleLike');
+Route::get('/status/delete/{id}','User\StatusController@delete');
+
+Route::get('/listComment/{id}','User\CommentController@index');
+
+Route::post('/Comment','User\CommentController@commentStatus');
+
+
 
 
 

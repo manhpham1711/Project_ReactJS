@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom';
+//import { withRouter } from 'react-router-dom';
 
 import data from '../Body/data';
 
@@ -69,4 +69,4 @@ class Test extends Component {
   }
 
 }
-export default withRouter(Test);
+export default Test;

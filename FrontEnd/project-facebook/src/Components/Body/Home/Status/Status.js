@@ -5,33 +5,14 @@ import StatusItem from './StatusItem';
 class Status extends Component {
     constructor(props) {
         super(props);
-        this.getListNumberLike();
+        localStorage.removeItem('listPeopleLike');
         this.getData();
+        this.getDataUser();
         this.state = {
             status: [],
-            like: [],
-            listPeopleLike: []
+            user: []
         }
-        this.numberLIkeStatusI = this.numberLIkeStatus.bind(this);
     }
-
-    getListNumberLike() {
-        fetch("http://127.0.0.1:8000/api/listLike")
-            .then(response => {
-                return response.json()
-                    .then((data) => {
-                        console.log(data);
-                        this.updateLike(data);
-                    });
-            });
-    }
-
-    updateLike(data) {
-        this.setState({
-            like: data
-        });
-    }
-
 
     getData() {
         fetch("http://127.0.0.1:8000/api/listStatus")
@@ -50,88 +31,39 @@ class Status extends Component {
         });
     }
 
-    onClickLike(id) {
-        return (event) => {
-            let Like = {
-                user_id: localStorage.getItem('User_id'),
-                status_id: id
-            }
-            let LikeInJson = JSON.stringify(Like);
-            console.log(LikeInJson);
-
-            fetch("http://127.0.0.1:8000/api/like", {
+    getDataUser() {
+        fetch("http://127.0.0.1:8000/api/user/detail",
+            {
                 method: "post",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Authorization": localStorage.getItem("User_id")
                 },
-                body: LikeInJson
+                body: null
             })
-                .then((response) => {
-                    return response.json();
-                }).then((data) => {
-                    this.updateLike(data);
-                });
-
-        }
+            .then(response => {
+                return response.json()
+                    .then((data) => {
+                        console.log(data);
+                        this.updateDataUser(data);
+                    });
+            });
     }
 
-    numberLIkeStatus(id) {
-        const like = this.state.like;
-        let numberLike = 0;
-        for (var i = 0; i < like.length; i++) {
-            if (like[i].status_id == id) {
-                numberLike = like[i].numberLike;
-                break;
-            }
-        }
-        return numberLike;
-    }
-
-    onMouseEnterLike(id) {
-        return (event) => {
-            fetch("http://127.0.0.1:8000/api/status/listPeopleLike",
-                {
-                    method: "post",
-                    headers: {
-                        "Authorization": id
-                    },
-                    body: null
-                })
-                .then(response => {
-                    return response.json()
-                        .then((data) => {
-                            console.log(data);
-                            this.updateListPeopleLike(data);
-                        });
-                });
-
-            document.getElementById('peoplesLike').style.display = "block";
-        }
-    }
-
-    updateListPeopleLike(data) {
+    updateDataUser(data) {
         this.setState({
-            listPeopleLike: data
+            user: data
         });
-    }
-
-    onMouseLeaveLike() {
-        return (event) => {
-            document.getElementById('peoplesLike').style.display = "none";
-        }
     }
 
     show() {
         let listStarus;
         const { status } = this.state;
+        const { user } = this.state;
         listStarus = status.map((item, index) =>
             < StatusItem
                 item={item}
                 key={index}
-                numberLike={this.numberLIkeStatus(item.id)}
-                onClickLike={this.onClickLike(item.id)}
-                onMouseEnterLike={this.onMouseEnterLike(item.id)}
-                onMouseLeaveLike={this.onMouseLeaveLike()}
+                username={user.username}
             />
         );
         return listStarus;
@@ -140,15 +72,7 @@ class Status extends Component {
         return (
             <div className="ListStatus">
                 {this.show()}
-                <div id="peoplesLike">
-                    {this.state.listPeopleLike.map((item) =>
-                        <div>
-                            <p>{item.name}</p>
-                            <br></br>
-                        </div>
-                    )}
-                </div>
-
+                
             </div>
         )
     }

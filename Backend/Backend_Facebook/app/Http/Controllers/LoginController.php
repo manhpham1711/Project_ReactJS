@@ -63,6 +63,45 @@ class LoginController extends Controller
         }
     }
 
+    function updateInfomation(Request $request){
+
+		$key = "21A hocsinhngoannhatnha j@1711";
+        $id = $request->input('id_user');
+
+        $user_id = JWT::decode($id, $key, array('HS256'));
+
+        $name = $request->input('name');
+        $gender = $request->input('gender');
+        $birthday = $request->input('birthday');
+
+        $user = User::where('id', $user_id)->first();
+        $image = $request->input('image');
+
+        if(is_null($image)){
+            $image = $user->avatar;
+        }else{
+            $image = UpLoadImageController::uploadFile($image);
+        }
+
+        $password = $request->input('password');
+
+        if(is_null($password)){
+            $password = $user->password;
+        }else{
+            $password = Hash::make($password);
+        }
+
+        $user->name =  $name;
+        $user->gender = $gender;
+        $user->birthday = $birthday;
+        $user->avatar = $image;
+        $user->password = $password;
+
+        $user->save();
+        $data = array("data" => null);
+        return response()->json($data, 200);
+    }
+
     function detail(){
         $token = request()->header("Authorization");
 		$key = "21A hocsinhngoannhatnha j@1711";

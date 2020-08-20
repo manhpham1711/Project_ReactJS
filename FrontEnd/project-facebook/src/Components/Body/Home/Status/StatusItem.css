@@ -1,41 +1,134 @@
 .status{
     width: 100%;
-    height: 100%;
-    margin-top: 5px;
+    height: auto;
+    margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 2%; 
     border: 3px solid #b6b2b2 ;
-    box-shadow: 2px 2px #585656; 
+    box-shadow: 6px 5px 12px -2px #585656; 
 }
 
 #posts{
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 
 #posts .content{
     margin-left: 6%;
     width: 88%;
-    max-height: 70px;
     text-align: left;
     font-size: 15px;
 }
 #posts .photo{
     margin-top: 10px;
     width: 100%;
-    max-height: 200px;
+    height: auto;
 }
 #posts .photo img{
     width: 480px;
-    height: 200px;
+    height: auto;
 }
 
 #posts .function{
-    margin-top: 10px;
+    margin-top: 2%;
+    margin-bottom: 20px;
     width: 100%;
     max-height: 30px;  
 }
+.status .listLike{
+    width: 64%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #b6b2b2 ;
+    margin-left: 18%;
+
+}
+
+.status .listLike .peopleLike{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin: 9px 12px;
+    display: flex;
+    
+}
+
+.status .listLike .peopleLike p{
+    font-size: 30px;
+    margin: 0 14px;
+    
+   
+}
+
+.status .listLike .peopleLike img{
+    float: left;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    
+    overflow: hidden;
+}
+        /* **** Comment ***** */
+.status .listComment{
+    width: 74%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #b6b2b2 ;
+    margin: 6% 14%;
+}
+
+.status .listComment button{ 
+    float: right;
+    margin: 1% 2%;
+    height: 30px;
+    width: 65px;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.status .listComment button:hover{
+    background-color: burlywood;
+}
+
+.status .listComment form {
+    width: 83%;
+    display: inline-flex;
+    margin: 5% 8%;
+}
+.status .listComment form input{
+    width: 82%;
+    border-radius: 15px;
+    min-height: 40%;
+}
+
+
+.status .listComment .comment{
+    width: 100%;
+    display: flex;
+}
+
+.status .listComment .comment .imgUserComment{
+    width: 40px;
+}
+
+.status .listComment .comment .imgUserComment img{
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+.status .listComment .comment .connect{
+    display: grid;
+    width: 86%;
+    text-align: left;
+}
+
+
+
+
+
+
+
 
 .function button{
     width: 100px;
@@ -52,37 +145,106 @@
 }
 
 #user{
-    display: inline-flex;
-    width: 100%;
-    height: 40px;
+    /* display: inline-flex; */
+    display: flex;
+    width: 96%;
+    height: auto;
+    margin: 2% 2%;
 }
 
-#user .img{
+#user .avtarUser{
+    width: 40px;
+    float: left;
+}
+
+#user .avtarUser img{
     border-radius: 50%; 
     border: 2px solid #5bb1f7; 
     padding: 3px; 
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
-#user .menu{
-    margin-left: 65%;
+
+#user .information{
+    width: 50%;
+    float: left;
+    margin-top: -2%;
+    padding-left: 2%;
 }
-#user .menu img{
-    height: 35px;
-    width: 25px;
-}
-#information{
-    margin-left: 10px;
-    height: 100%;
-}
-#information p{
-    margin-top: 0px;
-    font-size: 15px;
+#user .information p{
     text-align: left;
 }
+#user .menuFunction{
+    width: 48%;
+    /* display: flex; */
+    padding-right: 2%;
+}
+
+#user .menuFunction .buttonFunction{
+    float: left;
+    width: 85%;
+    border: solid 1px;
+    border-radius: 15px;
+    background-color: aquamarine;
+}
+
+#user .menuFunction .buttonFunction button{
+    border: solid 1px;
+    border-radius: 20px;
+    width: 90%;
+    height: 30px;
+    margin: 2% 4%;
+}
+#user .menuFunction .buttonFunction img{
+    height: 25px;
+    width: 30px;
+    float: right;
+    margin: 3% 5%;
+}
+
+#user .menuFunction .iconMenu1{
+    width: 100%;
+    float: right;
+}
+
+#user .menuFunction .iconMenu{
+    float: right;
+}
+
+#user .menuFunction .iconMenu img{
+    width: 40px;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
 
 #peoplesLike{
     display: none;
 }
+
+.like {
+    margin-top: 42px;
+    margin-left:10%;
+    margin-right: 10%;
+    height: 100px;
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+}
+
+.like .sticky {
+    position: fixed;
+    top: 42px;
+    background-color: red;
+    width:100%;
+     
+}
+ /*  ******************* menu */
+
+
+
+
+
+  
 
 

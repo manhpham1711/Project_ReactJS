@@ -5,8 +5,6 @@ import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
 import {
   BrowserRouter as Router,
-  Link,
-  Route,
   withRouter
 } from "react-router-dom";
 
@@ -33,10 +31,10 @@ class App extends Component {
         </div>
         <Router>
           <div className="fixedMenu">
-            <Menu />
+            <Menu key = {null}/>
           </div>
           <div>
-            <Routers />
+            <Routers key = {null}/>
           </div>
         </Router>
         <div>

@@ -1,13 +1,11 @@
 .personsal {
     width: 100%;
-    background-color: blue;
-    height: 300px;
+    height: auto;
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 4% auto;
+    display: flex;
   }
-  
   @media (min-width: 576px) {
     .personsal {
       max-width: 540px;
@@ -22,13 +20,128 @@
   
   @media (min-width: 992px) {
     .personsal {
-      max-width: 660px;
+      max-width: 760px;
     }
   }
   
   @media (min-width: 1200px) {
     .personsal {
-      max-width: 760px;
+      max-width: 860px;
     }
   }
+.personsal .information{
+  width: 35%;
+  height: auto;
+}
+
+.information img{
+  width: 205px;
+  height: auto;
+  margin: 6% 12%;
+  border-radius: 20px;
+}
+
+.information .connect{
+  width: 80%;
+  height: auto;
+  margin: 1% 6%;
+}
+.information .connect p{
+  font-style: italic;
+  size: 50px;
+}
+.information .action{
+  width: 90%;
+  height: auto;
+  margin: 10% 2%;
+}
+.information .action button{
+  margin-left: 4%;
+  width: 110px;
+  height: auto;
+  border-radius: 30px;
+  min-height: 30px;
+}
+
+.information .action button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.personsal .statusPersonsal{
+  width: 66%;
+  margin-left: 1%;
+  height: auto;
+}
+
+.statusPersonsal form {
+  margin: 5% 1%;
+  width: 100%;
+  border-radius: 15px;
+  padding: 3% 3%;
+  border: 3px solid hsl(0, 3%, 71%) ;
+  box-shadow: 6px 5px 12px -2px #585656; 
+}
+
+.statusPersonsal form h3{
+  width: 24%;
+  font-style: italic;
+  font-family: cursive;
+  color: currentcolor;
+}
+
+.statusPersonsal form button{
+  width: 30%;
+  min-height: 35px;
+  margin: 2% 35%;
+  background-color: #7ccef5;
+  border-radius: 17px;
+}
+.statusPersonsal form button:hover{
+  background-color: #f5e97dc0;
+}
+.statusPersonsal form .informmationUser{
+  display: flex;
+  width: 90%;
+  padding: 3% 2%;
+}
+
+.statusPersonsal form .informmationUser input{
+  padding-left: 3%;
+  width: 65%;
+  min-height: 25px;
+  border: solid 2px #b6b2b2;
+  border-radius: 20px ;
+}
+
+.statusPersonsal form .Gender{
+  display: flex;
+  width: 90%;
+}
+
+.statusPersonsal form .Gender .formgender{
+  width: 24%;
+  padding: 3% 2%;
+}
+
+.statusPersonsal form .image{
+  width: 90%;
+  display: flex;
+  padding: 3% 2%;
+}
+
+.statusPersonsal form .image img{
+  margin-left: 1%;
+  width: 47%;
+  border-radius: 15px;
+} 
+
+.statusPersonsal form .image input{
+  width: 15%;
+  margin: 2% 10%;
+}
+
+
+
+
 

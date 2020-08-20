@@ -22,6 +22,7 @@ class Routers extends Component {
                 <Route exact path='/shop'> <Shop /> </Route>
                 <Route exact path='/notification'> <Notification /> </Route>
                 <Route exact path='/personal'> <Personsal /> </Route>
+                <Route path="/personal/editUser"><Personsal /></Route>
             </Switch>
         )
     }

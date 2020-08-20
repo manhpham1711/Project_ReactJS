@@ -9,10 +9,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Test from './Components/test/test';
-import Img from './Components/test/testimg';
-import TestUpoadFile from './Components/test/TestUpoadFile';
-import TestLike from './Components/test/testLike';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,13 +16,16 @@ ReactDOM.render(
       <Switch>
         <Route exact path='/'> <Login /> </Route>
         <Route exact path='/home'> <App /> </Route>
-        <Route exact path='/test'> <TestLike /> </Route>
-        <Route exact path='/tests'><Img /> </Route>
-        <Route exact path='/test/uploadImg'><TestUpoadFile /></Route>
+        <Route exact path='/personal'> <App /> </Route>
+        <Route exact path='/friend'> <App /> </Route>
+        <Route exact path='/shop'> <App /> </Route>
+        <Route exact path='/notification'> <App /> </Route>
+        <Route path="/personal/editUser"><App /></Route>
       </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 serviceWorker.unregister();

@@ -58,15 +58,18 @@ class SubHeader extends Component {
 
     postStatus(event) {
         event.preventDefault();
-        let content = event.target['content'].value;
-        let id = localStorage.getItem("User_id");
-
+        var content = event.target['content'].value;
+        var id = localStorage.getItem("User_id");
+        var img = "";
+        if(this.state.img[0] !== null){
+            img = this.state.img[0];
+        }
         let Status = {
             id: id,
             image: this.state.img[0],
             content: content
         }
-        let StatusInJson = JSON.stringify(Status);
+        var StatusInJson = JSON.stringify(Status);
         console.log(StatusInJson);
         fetch("http://127.0.0.1:8000/api/status/add",
             {
@@ -79,7 +82,8 @@ class SubHeader extends Component {
             .then(response => {
                 if (response.status === 200) {
                     alert("Trạng thái của bạn cập nhận thành công");
-                    this.props.history.push('/home');
+                    //this.props.history.push('/home');
+                    window.location.replace('http://localhost:3000/home')
                 } else {
                     alert("Không thể tải lên, vui lòng kiểm tra lại");
                 }
@@ -94,8 +98,8 @@ class SubHeader extends Component {
                     &ensp;<textarea name="content" placeholder="Bạn đang nghĩ gì?" />
                     <div className="functionPost">
                         <input type="file" name="image" multiple onChange={this.changeHandler} />
-                        <button type="submit"> Post</button>
                     </div>
+                    <button type="submit"> Post</button>
                 </form>
             </div>
         )

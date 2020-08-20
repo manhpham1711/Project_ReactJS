@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Shop extends Component{
     render(){
         return(
-            <div>
+            <div style = {{marginTop: "10%"}}>
                 <p>hellop Shop</p>
             </div>
         )
