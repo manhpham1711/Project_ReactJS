@@ -193,7 +193,7 @@ class StatusItem extends Component {
             <div className="status">
                 <div id="user">
                     <div className="avtarUser">
-                        <img src={"http://127.0.0.1:8000/" + this.props.item.avatar} alt="" />
+                        <center><img src={"http://127.0.0.1:8000/" + this.props.item.avatar} alt="" /></center>
                     </div>
                     <div className="information">
                         <div>

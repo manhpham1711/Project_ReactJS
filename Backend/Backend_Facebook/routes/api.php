@@ -44,6 +44,8 @@ Route::get('/listComment/{id}','User\CommentController@index');
 
 Route::post('/Comment','User\CommentController@commentStatus');
 
+Route::post('/user/friend','User\FriendController@index');
+
 
 
 

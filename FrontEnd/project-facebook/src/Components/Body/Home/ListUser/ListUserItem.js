@@ -5,8 +5,9 @@ class ListUserItem extends Component {
     render() {
         return (
             <div className="userItem">
-                <img src="https://mtrend.vn/wp-content/uploads/2015/11/hinh-nen-tinh-yeu-dep-nhat-1.jpg" alt="" />
-                <p>Manh Pham</p>
+                <img src={"http://127.0.0.1:8000/" + this.props.item.avatar} />
+                <p>{this.props.item.name}</p>
+                <button> Huy </button>
             </div>
         )
     }

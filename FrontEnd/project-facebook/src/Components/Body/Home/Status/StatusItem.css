@@ -1,5 +1,5 @@
-.status{
-    width: 100%;
+.statusPersonsal .status{
+    width: 90%;
     height: auto;
     margin-top: 20px;
     margin-right: auto;
@@ -26,7 +26,7 @@
     height: auto;
 }
 #posts .photo img{
-    width: 480px;
+    max-width: 480px;
     height: auto;
 }
 
